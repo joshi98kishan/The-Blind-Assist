@@ -2,7 +2,7 @@
 
 This project is based on the RBI's [tender](https://github.com/joshi98kishan/The-Blind-Assist/blob/master/RFP03052019.pdf) titled "Development of Mobile Application for Aiding the Visually Impaired in Identifying the Denominations of Indian Banknotes (Currency Denomination Identifier)" which was released on May 04, 2019.
 
-This project will help visual and hearing-impaired persons to detect Indian Currency Denomination by clicking the image of a banknote through this android app.
+Which will help visual and hearing-impaired persons to detect Indian Currency Denomination by clicking the image of a banknote through this android app.
 
 This is a major project which is based on (Research + Applied) machine learning and Android Development. 
 
