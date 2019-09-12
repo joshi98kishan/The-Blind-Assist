@@ -1,6 +1,6 @@
 # The-Blind-Assist
 
-This project is motivated from one of the RBI's [tender](https://github.com/joshi98kishan/The-Blind-Assist/blob/master/RFP03052019.pdf) titled "Development of Mobile Application for Aiding the Visually Impaired in Identifying the Denominations of Indian Banknotes (Currency Denomination Identifier)" which was released on May 04, 2019.
+This project is motivated by one of the RBI's [tender](https://github.com/joshi98kishan/The-Blind-Assist/blob/master/RFP03052019.pdf) titled "Development of Mobile Application for Aiding the Visually Impaired in Identifying the Denominations of Indian Banknotes (Currency Denomination Identifier)" which was released on May 04, 2019.
 
 This project will help visual and hearing-impaired persons to detect Indian Currency through android app. 
 
