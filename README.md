@@ -12,7 +12,7 @@ We will share the dataset after the completion of the project.
 We are using keras, tensorflow, fastai and pytorch libraries, to leverage the power of all.
 And, we have achieved 99% accuracy on resnet50 and 90% accuracy on MobileNetV2 model.
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/joshi98kishan/The-Blind-Assist/blob/master/sample_images/sample_1.jpeg)
 
 (Initially we have used googles examples app, added our tflite model to it)
 
