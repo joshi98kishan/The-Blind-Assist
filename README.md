@@ -1,6 +1,6 @@
 # The-Blind-Assist
 
-This project is motivated from one of the RBI's [tender]() titled "Development of Mobile Application for Aiding the Visually Impaired in Identifying the Denominations of Indian Banknotes (Currency Denomination Identifier)".
+This project is motivated from one of the RBI's [tender](https://github.com/joshi98kishan/The-Blind-Assist/blob/master/RFP03052019.pdf) titled "Development of Mobile Application for Aiding the Visually Impaired in Identifying the Denominations of Indian Banknotes (Currency Denomination Identifier)".
 
 This project will help visual and hearing-impaired persons to detect Indian Currency. 
 
@@ -11,7 +11,6 @@ We will share the dataset after the completion of the project.
 
 We are using keras, tensorflow, fastai and pytorch libraries, to leverage the power of all.
 And, we have achieved 99% accuracy on resnet50 and 90% accuracy on MobileNetV2 model.
-
 
 
 (Initially we have used googles examples app, added our tflite model to it)
