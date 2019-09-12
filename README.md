@@ -11,7 +11,7 @@ We created the Indian Currency Dataset(ICD) for this project which currently has
 (We will share the dataset after the completion of the project.)
 
 We are using keras, tensorflow, fastai and pytorch libraries, to leverage the power of all.       
-And, we have achieved 99% accuracy on ResNet50 and 90% accuracy on MobileNetV2 model.
+Currently, we have achieved 99% accuracy on ResNet50 and 90% accuracy on MobileNetV2 model (DATE : 12/9/2019).
 
 We are using MobileNet model because it runs efficiently and fast on mobile phones.
 
