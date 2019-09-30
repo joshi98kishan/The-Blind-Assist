@@ -15,7 +15,7 @@
 -->
 
 <resources>
-    <string name="activity_name_classification">TFL Classify</string>
+    <string name="activity_name_classification">TheBlindAssist</string>
     <string name="activity_name_detection">TFL Detect</string>
     <string name="activity_name_speech">TFL Speech</string>
 </resources>

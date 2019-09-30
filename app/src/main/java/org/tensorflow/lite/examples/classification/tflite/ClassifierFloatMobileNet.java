@@ -44,18 +44,18 @@ public class ClassifierFloatMobileNet extends Classifier {
 
   @Override
   public int getImageSizeX() {
-    return 448;
+    return 360;
   }
 
   @Override
-  public int getImageSizeY() { return 448; }
+  public int getImageSizeY() { return 360; }
 
   @Override
   protected String getModelPath() {
     // you can download this file from
     // see build.gradle for where to obtain this file. It should be auto
     // downloaded into assets.
-    return "model-7-MobNet-448.tflite";
+    return "model-9-MobNet-448.tflite";
   }
 
   @Override
