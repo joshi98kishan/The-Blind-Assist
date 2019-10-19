@@ -101,14 +101,14 @@ public abstract class CameraActivity extends AppCompatActivity
 //      rotationTextView,
 //      inferenceTimeTextView;
   protected ImageView bottomSheetArrowImageView;
-  private ImageView plusImageView, minusImageView;
+//  private ImageView plusImageView, minusImageView;
 //  private Spinner modelSpinner;
 //  private Spinner deviceSpinner;
-  private TextView threadsTextView;
+//  private TextView threadsTextView;
 
   private Model model = Model.FLOAT;
   private Device device = Device.CPU;
-  private int numThreads = -1;
+  private int numThreads = 1;
 
   private TextToSpeech textToSpeech;
 
@@ -149,9 +149,9 @@ public abstract class CameraActivity extends AppCompatActivity
       }
     });
 
-    threadsTextView = findViewById(R.id.threads);
-    plusImageView = findViewById(R.id.plus);
-    minusImageView = findViewById(R.id.minus);
+//    threadsTextView = findViewById(R.id.threads);
+//    plusImageView = findViewById(R.id.plus);
+//    minusImageView = findViewById(R.id.minus);
 //    modelSpinner = findViewById(R.id.model_spinner);
 //    deviceSpinner = findViewById(R.id.device_spinner);
     bottomSheetLayout = findViewById(R.id.bottom_sheet_layout);
@@ -222,12 +222,12 @@ public abstract class CameraActivity extends AppCompatActivity
 //    modelSpinner.setOnItemSelectedListener(this);
 //    deviceSpinner.setOnItemSelectedListener(this);
 
-    plusImageView.setOnClickListener(this);
-    minusImageView.setOnClickListener(this);
+//    plusImageView.setOnClickListener(this);
+//    minusImageView.setOnClickListener(this);
 
 //    model = Model.valueOf(modelSpinner.getSelectedItem().toString().toUpperCase());
 //    device = Device.valueOf(deviceSpinner.getSelectedItem().toString());
-    numThreads = Integer.parseInt(threadsTextView.getText().toString().trim());
+//    numThreads = Integer.parseInt(threadsTextView.getText().toString().trim());
   }
 
   protected int[] getRgbBytes() {
@@ -394,10 +394,12 @@ public abstract class CameraActivity extends AppCompatActivity
   public synchronized void onDestroy() {
     LOGGER.d("onDestroy " + this);
     super.onDestroy();
+
     if (textToSpeech != null) {
       textToSpeech.stop();
       textToSpeech.shutdown();
     }
+
   }
 
   protected synchronized void runInBackground(final Runnable r) {
@@ -658,21 +660,21 @@ public abstract class CameraActivity extends AppCompatActivity
 
   @Override
   public void onClick(View v) {
-    if (v.getId() == R.id.plus) {
-      String threads = threadsTextView.getText().toString().trim();
-      int numThreads = Integer.parseInt(threads);
-      if (numThreads >= 9) return;
-      setNumThreads(++numThreads);
-      threadsTextView.setText(String.valueOf(numThreads));
-    } else if (v.getId() == R.id.minus) {
-      String threads = threadsTextView.getText().toString().trim();
-      int numThreads = Integer.parseInt(threads);
-      if (numThreads == 1) {
-        return;
-      }
-      setNumThreads(--numThreads);
-      threadsTextView.setText(String.valueOf(numThreads));
-    }
+//    if (v.getId() == R.id.plus) {
+//      String threads = threadsTextView.getText().toString().trim();
+//      int numThreads = Integer.parseInt(threads);
+//      if (numThreads >= 9) return;
+//      setNumThreads(++numThreads);
+//      threadsTextView.setText(String.valueOf(numThreads));
+//    } else if (v.getId() == R.id.minus) {
+//      String threads = threadsTextView.getText().toString().trim();
+//      int numThreads = Integer.parseInt(threads);
+//      if (numThreads == 1) {
+//        return;
+//      }
+//      setNumThreads(--numThreads);
+//      threadsTextView.setText(String.valueOf(numThreads));
+//    }
   }
 
   @Override
