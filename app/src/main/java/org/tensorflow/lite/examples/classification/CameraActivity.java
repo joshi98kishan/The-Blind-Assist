@@ -67,6 +67,8 @@ public abstract class CameraActivity extends AppCompatActivity
         Camera.PreviewCallback,
         View.OnClickListener,
         AdapterView.OnItemSelectedListener {
+  private float threshold = 0.9f;
+
   private static final Logger LOGGER = new Logger();
 
   private static final int PERMISSIONS_REQUEST = 1;
@@ -561,7 +563,8 @@ public abstract class CameraActivity extends AppCompatActivity
             if(recognition.getTitle().equals("none")){
                 //do nothing
             }else{
-              textToSpeech.speak(recognition.getTitle(), TextToSpeech.QUEUE_FLUSH, null);
+              if (recognition.getConfidence() != null && recognition.getConfidence() > 0.9)
+                textToSpeech.speak(recognition.getTitle(), TextToSpeech.QUEUE_FLUSH, null);
             }
         }
 
