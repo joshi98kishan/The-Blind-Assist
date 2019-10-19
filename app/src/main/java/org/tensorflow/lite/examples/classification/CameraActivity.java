@@ -40,6 +40,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
@@ -47,6 +49,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -68,6 +71,7 @@ public abstract class CameraActivity extends AppCompatActivity
         View.OnClickListener,
         AdapterView.OnItemSelectedListener {
   private float threshold = 0.9f;
+  private TextWatcher textWatcher;
 
   private static final Logger LOGGER = new Logger();
 
@@ -94,6 +98,8 @@ public abstract class CameraActivity extends AppCompatActivity
 //      recognition1ValueTextView,
 //      recognition2ValueTextView,
       recognitionValueTextView;
+
+  protected EditText thresholdValueTextView;
 
 
 //  protected TextView
@@ -160,6 +166,7 @@ public abstract class CameraActivity extends AppCompatActivity
     gestureLayout = findViewById(R.id.gesture_layout);
     sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
     bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
+    thresholdValueTextView = findViewById(R.id.threshold_value);
 
     ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
     vto.addOnGlobalLayoutListener(
@@ -230,7 +237,32 @@ public abstract class CameraActivity extends AppCompatActivity
 //    model = Model.valueOf(modelSpinner.getSelectedItem().toString().toUpperCase());
 //    device = Device.valueOf(deviceSpinner.getSelectedItem().toString());
 //    numThreads = Integer.parseInt(threadsTextView.getText().toString().trim());
+    threshold = Float.valueOf(thresholdValueTextView.getText().toString());
+
+    textWatcher = new TextWatcher(){
+
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        //do nothing
+      }
+
+      @Override
+      public void onTextChanged(CharSequence s, int start, int before, int count) {
+        //do nothing
+      }
+
+      @Override
+      public void afterTextChanged(Editable s) {
+        if(s.length() != 0){
+          threshold = Float.valueOf(s.toString());
+        }
+      }
+    };
+
+    thresholdValueTextView.addTextChangedListener(textWatcher);
+
   }
+  ////////////////////////////////////onCreate() Ends Here///////////////////////////////////////////////////
 
   protected int[] getRgbBytes() {
     imageConverter.run();
@@ -563,7 +595,7 @@ public abstract class CameraActivity extends AppCompatActivity
             if(recognition.getTitle().equals("none")){
                 //do nothing
             }else{
-              if (recognition.getConfidence() != null && recognition.getConfidence() > 0.9)
+              if (recognition.getConfidence() != null && recognition.getConfidence() * 100 > threshold)
                 textToSpeech.speak(recognition.getTitle(), TextToSpeech.QUEUE_FLUSH, null);
             }
         }
