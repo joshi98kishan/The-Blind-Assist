@@ -39,6 +39,8 @@ import androidx.annotation.UiThread;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
 import android.view.View;
@@ -52,6 +54,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.nio.ByteBuffer;
 import java.util.List;
+import android.speech.tts.TextToSpeech;
+import java.util.Locale;
 import org.tensorflow.lite.examples.classification.env.ImageUtils;
 import org.tensorflow.lite.examples.classification.env.Logger;
 import org.tensorflow.lite.examples.classification.tflite.Classifier.Device;
@@ -103,6 +107,8 @@ public abstract class CameraActivity extends AppCompatActivity
   private Device device = Device.CPU;
   private int numThreads = -1;
 
+  private TextToSpeech textToSpeech;
+
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     LOGGER.d("onCreate " + this);
@@ -119,6 +125,26 @@ public abstract class CameraActivity extends AppCompatActivity
     } else {
       requestPermission();
     }
+
+    //initialising tts object
+    textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+      @Override
+      public void onInit(int status) {
+        if(status == TextToSpeech.SUCCESS){
+            int ttsLang = textToSpeech.setLanguage(Locale.US);
+
+            if(ttsLang == TextToSpeech.LANG_MISSING_DATA || ttsLang == TextToSpeech.LANG_NOT_SUPPORTED){
+              Log.e("TTS", "The Language is not supported!");
+            }else{
+              Log.i("TTS", "Language Supported.");
+            }
+          Toast.makeText(getApplicationContext(), "TTS Initialization succeed!", Toast.LENGTH_SHORT).show();
+          Log.i("TTS", "Initialization success.");
+        }else{
+          Toast.makeText(getApplicationContext(), "TTS Initialization failed!", Toast.LENGTH_SHORT).show();
+        }
+      }
+    });
 
     threadsTextView = findViewById(R.id.threads);
     plusImageView = findViewById(R.id.plus);
@@ -365,6 +391,10 @@ public abstract class CameraActivity extends AppCompatActivity
   public synchronized void onDestroy() {
     LOGGER.d("onDestroy " + this);
     super.onDestroy();
+    if (textToSpeech != null) {
+      textToSpeech.stop();
+      textToSpeech.shutdown();
+    }
   }
 
   protected synchronized void runInBackground(final Runnable r) {
@@ -521,7 +551,16 @@ public abstract class CameraActivity extends AppCompatActivity
     if (results != null && results.size() >= 3) {
       Recognition recognition = results.get(0);
       if (recognition != null) {
-        if (recognition.getTitle() != null) recognitionTextView.setText(recognition.getTitle());
+        if (recognition.getTitle() != null){
+            recognitionTextView.setText(recognition.getTitle());
+//            Toast.makeText(getApplicationContext(), recognition.getTitle(), Toast.LENGTH_SHORT).show();
+            if(recognition.getTitle().equals("none")){
+                //do nothing
+            }else{
+              textToSpeech.speak(recognition.getTitle(), TextToSpeech.QUEUE_FLUSH, null);
+            }
+        }
+
         if (recognition.getConfidence() != null)
           recognitionValueTextView.setText(
               String.format("%.2f", (100 * recognition.getConfidence())) + "%");

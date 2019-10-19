@@ -50,6 +50,8 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
   private Matrix cropToFrameTransform;
   private BorderedText borderedText;
 
+
+
   @Override
   protected int getLayoutId() {
     return R.layout.camera_connection_fragment;
