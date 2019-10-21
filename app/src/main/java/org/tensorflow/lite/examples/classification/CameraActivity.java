@@ -38,7 +38,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.UiThread;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+//import androidx.appcompat.widget.Toolbar;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -92,12 +92,12 @@ public abstract class CameraActivity extends AppCompatActivity
   private LinearLayout bottomSheetLayout;
   private LinearLayout gestureLayout;
   private BottomSheetBehavior sheetBehavior;
-  protected TextView recognitionTextView,
+  protected TextView recognitionTextView;
 //      recognition1TextView,
 //      recognition2TextView,
 //      recognition1ValueTextView,
 //      recognition2ValueTextView,
-      recognitionValueTextView;
+//      recognitionValueTextView;
 
   protected EditText thresholdValueTextView;
 
@@ -108,7 +108,7 @@ public abstract class CameraActivity extends AppCompatActivity
 //      cameraResolutionTextView,
 //      rotationTextView,
 //      inferenceTimeTextView;
-  protected ImageView bottomSheetArrowImageView;
+//  protected ImageView bottomSheetArrowImageView;
 //  private ImageView plusImageView, minusImageView;
 //  private Spinner modelSpinner;
 //  private Spinner deviceSpinner;
@@ -127,9 +127,9 @@ public abstract class CameraActivity extends AppCompatActivity
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
     setContentView(R.layout.activity_camera);
-    Toolbar toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
-    getSupportActionBar().setDisplayShowTitleEnabled(false);
+//    Toolbar toolbar = findViewById(R.id.toolbar);
+//    setSupportActionBar(toolbar);
+//    getSupportActionBar().setDisplayShowTitleEnabled(false);
 
     if (hasPermission()) {
       setFragment();
@@ -165,7 +165,7 @@ public abstract class CameraActivity extends AppCompatActivity
     bottomSheetLayout = findViewById(R.id.bottom_sheet_layout);
     gestureLayout = findViewById(R.id.gesture_layout);
     sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
-    bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
+//    bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
     thresholdValueTextView = findViewById(R.id.threshold_value);
 
     ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
@@ -195,18 +195,18 @@ public abstract class CameraActivity extends AppCompatActivity
                 break;
               case BottomSheetBehavior.STATE_EXPANDED:
                 {
-                  bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_down);
+//                  bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_down);
                 }
                 break;
               case BottomSheetBehavior.STATE_COLLAPSED:
                 {
-                  bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
+//                  bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
                 }
                 break;
               case BottomSheetBehavior.STATE_DRAGGING:
                 break;
               case BottomSheetBehavior.STATE_SETTLING:
-                bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
+//                bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
                 break;
             }
           }
@@ -216,7 +216,7 @@ public abstract class CameraActivity extends AppCompatActivity
         });
 
     recognitionTextView = findViewById(R.id.detected_item);
-    recognitionValueTextView = findViewById(R.id.detected_item_value);
+//    recognitionValueTextView = findViewById(R.id.detected_item_value);
 //    recognition1TextView = findViewById(R.id.detected_item1);
 //    recognition1ValueTextView = findViewById(R.id.detected_item1_value);
 //    recognition2TextView = findViewById(R.id.detected_item2);
@@ -600,9 +600,9 @@ public abstract class CameraActivity extends AppCompatActivity
             }
         }
 
-        if (recognition.getConfidence() != null)
-          recognitionValueTextView.setText(
-              String.format("%.2f", (100 * recognition.getConfidence())) + "%");
+//        if (recognition.getConfidence() != null)
+//          recognitionValueTextView.setText(
+//              String.format("%.2f", (100 * recognition.getConfidence())) + "%");
       }
 
       Recognition recognition1 = results.get(1);

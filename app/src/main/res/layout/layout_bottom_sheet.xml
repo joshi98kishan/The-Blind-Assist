@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottom_sheet_layout"
-    android:layout_width="match_parent"
+    android:layout_width="200dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:background="@drawable/bottom_sheet_bg"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="8dp"
-    app:behavior_hideable="true"
+    app:behavior_hideable="false"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <LinearLayout
@@ -20,12 +20,12 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
 
-        <ImageView
-            android:id="@+id/bottom_sheet_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/icn_chevron_up" />
+<!--        <ImageView-->
+<!--            android:id="@+id/bottom_sheet_arrow"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:src="@drawable/icn_chevron_up" />-->
 
 
         <LinearLayout
@@ -36,18 +36,19 @@
 
             <TextView
                 android:id="@+id/detected_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/detected_item_value"
                 android:layout_width="match_parent"
+                android:gravity="center"
                 android:layout_height="wrap_content"
-                android:gravity="right"
                 android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:textSize="30sp" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/detected_item_value"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="right"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="16sp" />-->
 
         </LinearLayout>
 
